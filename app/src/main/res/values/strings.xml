@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Chuck Norris App</string>
+    <string name="jokes">Random Joke</string>
+    <string name="joke_text">Input Text</string>
+    <string name="never_ending_text">Never Ending List</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="input_name">Enter Name for the Joke</string>
+</resources>
