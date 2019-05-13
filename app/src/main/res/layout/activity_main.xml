@@ -20,7 +20,7 @@
 
     <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:gravity="center_horizontal"
             tools:ignore="MissingConstraints" app:layout_constraintBottom_toTopOf="@+id/r_joke"
             android:layout_marginBottom="24dp" android:id="@+id/linearLayoutCompat"
