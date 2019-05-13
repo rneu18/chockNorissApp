@@ -4,8 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import com.github.ybq.android.spinkit.SpinKitView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,6 +20,7 @@ class InputName : AppCompatActivity() {
     lateinit var submitbtn:Button
     private lateinit var backtoMenu:ImageView
     lateinit var alertTxt: TextView
+    lateinit var progress: SpinKitView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +30,7 @@ class InputName : AppCompatActivity() {
 
         submitbtn = findViewById(R.id.submitName)
         backtoMenu = findViewById(R.id.backToMenu)
+        progress = findViewById(R.id.spin_kit)
 
         backtoMenu.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
@@ -65,6 +69,7 @@ class InputName : AppCompatActivity() {
 
     fun initilizedRetrofit(firstName: String = "", lastName: String ="") {
 
+        progress.visibility = View.VISIBLE
         val service = JokesApiService.RetrofitFactory.makeRetrofitService()
         CoroutineScope(Dispatchers.IO).launch {
 
@@ -76,6 +81,7 @@ class InputName : AppCompatActivity() {
                     if (response.isSuccessful) {
                         val myRandomJoke:String =  response.body()?.value?.get(0)?.joke.toString()
                         initilizeDialog(myRandomJoke)
+                        progress.visibility = View.GONE
 
                     } else {
                        // Toast.makeText(this@InputName, "Not connected!", Toast.LENGTH_SHORT).show()

@@ -5,16 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
-import android.widget.Toast
-import androidx.databinding.DataBindingUtil.setContentView
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_jokes_list.*
 import retrofit2.HttpException
-import java.util.*
 import android.widget.AbsListView
+import com.github.ybq.android.spinkit.SpinKitView
 import kotlinx.coroutines.*
+
 
 
 class JokesList : AppCompatActivity() {
@@ -28,6 +26,7 @@ class JokesList : AppCompatActivity() {
     var currentItems: Int = 0
     var scrollOutItems: Int = 0
     var totalItems: Int = 0
+    lateinit var progress: SpinKitView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +34,7 @@ class JokesList : AppCompatActivity() {
         setContentView(R.layout.activity_jokes_list)
 
         backToMenu = findViewById(R.id.backToMenu)
+        progress = findViewById(R.id.spin_kit)
 
         backToMenu.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
@@ -74,7 +74,7 @@ class JokesList : AppCompatActivity() {
 
     fun initilizedRetrofit() {
 
-
+        progress.visibility = View.VISIBLE
         val service = JokesApiService.RetrofitFactory.makeRetrofitService()
         CoroutineScope(Dispatchers.IO).launch {
 
@@ -93,6 +93,7 @@ class JokesList : AppCompatActivity() {
                         }
                       //  recyclerView.adapter = MyAdapter(myJokeList, this@JokesList)
                         (recyclerView.adapter as MyAdapter).notifyDataSetChanged()
+                        progress.visibility = View.GONE
                        // MyAdapter.notifyDataSetChanged()
 
                     } else {
@@ -109,7 +110,4 @@ class JokesList : AppCompatActivity() {
             }
         }
     }
-
-
-
 }

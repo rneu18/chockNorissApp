@@ -11,11 +11,11 @@ import retrofit2.http.Query
 
 interface JokesApiService {
 
-    @retrofit2.http.GET("jokes/random/10")
+    @retrofit2.http.GET("jokes/random/3")
     fun getJokes(@Query("firstName") s: String,
                  @Query("lastName") s1: String): Deferred<Response<Json4Kotlin_Base>>
 
-    @retrofit2.http.GET("jokes/random/10")
+    @retrofit2.http.GET("jokes/random/8")
     fun getJokes2(): Deferred<Response<Json4Kotlin_Base>>
 
     object RetrofitFactory {

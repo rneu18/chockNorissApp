@@ -14,6 +14,8 @@ import kotlinx.coroutines.withContext
 import retrofit2.*
 import android.R.attr.fragment
 import android.content.Intent
+import android.view.View
+import com.github.ybq.android.spinkit.SpinKitView
 import retrofit2.HttpException as Retrofit2HttpException
 
 
@@ -22,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var myJokes: Button
     lateinit var myText: Button
     lateinit var contText: Button
+    lateinit var progress: SpinKitView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         myJokes = findViewById(R.id.r_joke)
         myText = findViewById(R.id.input_text)
         contText = findViewById(R.id.nEndingList)
+        progress = findViewById(R.id.spin_kit)
 
         myJokes.setOnClickListener{
             initilizedRetrofit()
@@ -53,11 +57,11 @@ class MainActivity : AppCompatActivity() {
     fun initilizedRetrofit() {
 
 
-
+        progress.visibility = View.VISIBLE
         val service = JokesApiService.RetrofitFactory.makeRetrofitService()
         CoroutineScope(Dispatchers.IO).launch {
 
-            val request = service.getJokes("", "")
+            val request = service.getJokes2()
             withContext(Dispatchers.Main) {
                 try {
                     val response = request.await()
@@ -66,6 +70,7 @@ class MainActivity : AppCompatActivity() {
 
                     val myRandomJoke:String =  response.body()?.value?.get(0)?.joke.toString()
                         initilizeDialog(myRandomJoke)
+                        progress.visibility = View.GONE
 
                     } else {
                       //  Toast.makeText(this@MainActivity, "Not connected!", Toast.LENGTH_SHORT).show()

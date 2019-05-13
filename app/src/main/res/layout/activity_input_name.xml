@@ -10,6 +10,8 @@
 
     <include
         layout="@layout/back_navbar" />
+    <include
+        layout="@layout/progrss_bar" />
 
 
     <TextView
