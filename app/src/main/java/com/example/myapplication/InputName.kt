@@ -109,7 +109,7 @@ class InputName : AppCompatActivity() {
 
         val mBuilder = AlertDialog.Builder(this)
             .setView(mDialogView)
-            .setTitle("Random Joke")
+
         //show dialog
         val  mAlertDialog = mBuilder.show()
         dissmissButton.setOnClickListener{

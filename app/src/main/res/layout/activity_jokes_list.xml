@@ -5,7 +5,7 @@
               android:layout_height="match_parent"
               tools:context=".JokesList"
               android:orientation="vertical"
-              android:background="@color/lightGoldenRodYellow"
+              android:background="@color/navy"
 
 
 >
@@ -16,6 +16,7 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/navy"
 
     >
 

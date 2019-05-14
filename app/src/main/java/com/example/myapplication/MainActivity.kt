@@ -93,15 +93,15 @@ class MainActivity : AppCompatActivity() {
         val mDialogView = LayoutInflater.from(this).inflate(R.layout.chuck_norris_diaolg, null)
 
         var myJoke:TextView = mDialogView.findViewById(R.id.my_joke)
-        var dissmissButton:Button = mDialogView.findViewById(R.id.dismissBtn)
+        var dismissButton:Button = mDialogView.findViewById(R.id.dismissBtn)
         myJoke.text = myRandomJoke
 
         val mBuilder = AlertDialog.Builder(this)
             .setView(mDialogView)
-            .setTitle("Random Joke")
+
         //show dialog
         val  mAlertDialog = mBuilder.show()
-        dissmissButton.setOnClickListener{
+        dismissButton.setOnClickListener{
            mAlertDialog.dismiss()
         }
     }

@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
+              android:layout_width="wrap_content"
               android:layout_height="wrap_content"
+              android:layout_gravity="center_horizontal"
               android:layout_margin="25dp"
-              android:background="@color/lightGoldenRodYellow"
+              android:background="@drawable/button_radius3"
               android:orientation="vertical"
                 >
 
 
     <TextView
             android:id="@+id/my_joke"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:textColor="@color/hotPink"
+            android:textColor="@color/cobalt"
+            android:text="test"
             android:layout_gravity="center"
             android:gravity="center_horizontal"
             android:textSize="20dp"
@@ -25,8 +27,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="@color/crimson"
-            android:textColor="@color/aquamarine1"
+            android:background="@drawable/button_radius"
+            android:textColor="@color/gray2"
             android:layout_margin="20dp"
             android:text="Dismiss"
             android:textSize="30dp"
